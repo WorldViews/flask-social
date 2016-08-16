@@ -54,7 +54,13 @@ def get_connection_values(response=None, **kwargs):
         secret=response['oauth_token_secret'],
         display_name='@%s' % user.screen_name,
         full_name = user.name,
-        provider_email = None,
         profile_url="http://twitter.com/%s" % user.screen_name,
-        image_url=user.profile_image_url
+        image_url=user.profile_image_url,
+        email='',
+    )
+
+def get_token_pair_from_response(response):
+    return dict(
+        access_token = response.get('oauth_token', None),
+        secret = response.get('oauth_token_secret', None)
     )

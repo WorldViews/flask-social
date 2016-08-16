@@ -46,13 +46,10 @@ def get_connection_values(response, **kwargs):
 
     access_token = response['access_token']
     graph = facebook.GraphAPI(access_token)
-    #profile = graph.get_object("me")
-    profile = graph.get_object("me?fields=id,name,email")
+    profile = graph.get_object("me")
     profile_url = "http://facebook.com/profile.php?id=%s" % profile['id']
     image_url = "http://graph.facebook.com/%s/picture" % profile['id']
-    #email = profile['email']
-    print "*****DGK: profile:", profile
-    #xxx
+
     return dict(
         provider_id=config['id'],
         provider_user_id=profile['id'],
@@ -60,7 +57,13 @@ def get_connection_values(response, **kwargs):
         secret=None,
         display_name=profile.get('username', None),
         full_name = profile.get('name', None),
-        provider_email = profile.get('email', None), #DGK
         profile_url=profile_url,
-        image_url=image_url
+        image_url=image_url,
+        email=profile.get('email', '')
+    )
+
+def get_token_pair_from_response(response):
+    return dict(
+        access_token = response.get('access_token', None),
+        secret = None
     )

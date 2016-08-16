@@ -11,7 +11,8 @@
 from importlib import import_module
 
 from flask import current_app
-from flask_oauthlib.client import OAuthRemoteApp as BaseRemoteApp
+#from flask_oauthlib.client import OAuthRemoteApp as BaseRemoteApp
+from flask.ext.oauth import OAuthRemoteApp as BaseRemoteApp
 from flask.ext.security import current_user
 from werkzeug.local import LocalProxy
 
