@@ -10,10 +10,6 @@
     :license: MIT, see LICENSE for more details.
 """
 
-print 5 * (60*"*"+"\n") + (60*"*")
-print "This ugly message comes from flask_social/__init__.py"
-print 6 * (60*"*"+"\n")
-
 __version__ = '1.6.2'
 
 from .core import Social
